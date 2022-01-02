@@ -1,4 +1,4 @@
-from pybaseball import statcast, statcast_pitcher_spin, statcast_pitcher
+from pybaseball import statcast
 
 data = statcast(start_dt = '2021-04-01', end_dt = '2021-10-04')
 
