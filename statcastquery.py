@@ -9,9 +9,6 @@ data.drop(columns = ['Unnamed: 0', 'spin_dir', 'spin_rate_deprecated',
                      'break_angle_deprecated', 'break_length_deprecated', 
                      'tfs_deprecated', 'tfs_zulu_deprecated', 'umpire', 'sv_id'], inplace = True)
 
-# pitch_count: combine balls and strikes (as string)
-data['count'] = data[['balls', 'strikes']].astype(str).agg('-'.join, axis = 1)
-
 # Switch from catcher's perspective to pitcher's perspective
 # Catcher's POV: (plate_x, plate_z)
 # Pitcher's POV: (plate_-x, plate_z)
