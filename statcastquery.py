@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[1]:
+
+
 from pybaseball import statcast
 
 data = statcast(start_dt = '2021-04-01', end_dt = '2021-10-04')
@@ -8,6 +14,10 @@ data = pd.read_csv('./data/mlb-pitches.csv')
 data.drop(columns = ['Unnamed: 0', 'spin_dir', 'spin_rate_deprecated', 
                      'break_angle_deprecated', 'break_length_deprecated', 
                      'tfs_deprecated', 'tfs_zulu_deprecated', 'umpire', 'sv_id'], inplace = True)
+
+# Drop pitch types Fasball, knuckleball, eephus, and screwball
+pitch_values = ['SC', 'EP', 'KN', 'FA', 'CS']
+data = data[data.pitch_type.isin(pitch_values) == False]
 
 # Switch from catcher's perspective to pitcher's perspective
 # Catcher's POV: (plate_x, plate_z)
@@ -25,3 +35,4 @@ data['pfx_z'] = 12 * data['pfx_z']
 
 
 data.to_csv('./data/mlb-pitches.csv')
+
