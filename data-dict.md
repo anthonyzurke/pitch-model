@@ -75,3 +75,7 @@
 |spin_axis |The Spin Axis in the 2D X-Z plane in degrees from 0 to 360, such that 180 represents a pure backspin fastball and 0 degrees represents a pure topspin (12-6) curveball | mlb-pitches |float64
 |delta_home_win_exp              |The change in Win Expectancy before the Plate Appearance and after the Plate Appearance |mlb-pitches | float64
 |delta_run_exp                   |The change in Run Expectancy before the Pitch and after the Pitch |mlb-pitches |flaot64
+|bauer_units                   |spin rate / velocity |mlb-pitches |flaot64
+|is_strike                   |if the result of the pitch is a strike 1 if not 0 |mlb-pitches |int64
+|pitch_count                   |balls and strikes combined |mlb-pitches |object
+|swing_miss                   |if the result of the pitch is a swing and miss 1 if not 0 |mlb-pitches |flaot64

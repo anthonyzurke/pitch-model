@@ -19,6 +19,9 @@ data.drop(columns = ['Unnamed: 0', 'spin_dir', 'spin_rate_deprecated',
                      'fielder_7', 'fielder_8', 'fielder_9', 'bat_score', 
                      'fld_score', 'post_bat_score', 'post_fld_score'], inplace = True)
 
+# Add bauer_units column
+data['bauer_units'] = data['release_spin_rate'] / data['release_speed']
+
 # Drop pitch types Fasball, knuckleball, eephus, and screwball
 pitch_values = ['SC', 'EP', 'KN', 'FA', 'CS']
 data = data[data.pitch_type.isin(pitch_values) == False]
