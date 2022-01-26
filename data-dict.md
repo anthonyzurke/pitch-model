@@ -40,7 +40,6 @@
 |inning_topbot                   |Pre-pitch top or bottom of inning         |mlb-pitches |object
 |hc_x                            |Hit coordinate X of batted ball           |mlb-pitches |float64
 |hc_y                            |Hit coordinate X of batted ball           |mlb-pitches |float64
-|fielder_2                       |Pre-pitch MLB Player Id of Catcher     |mlb-pitches |int64
 |vx0                             |Pre-pitch MLB Player Id of Catcher     |mlb-pitches |float64
 |vy0        |The velocity of the pitch, in feet per second, in y-dimension, determined at y=50 feet  |mlb-pitches |float64
 |vz0        |The velocity of the pitch, in feet per second, in z-dimension, determined at y=50 feet  |mlb-pitches |float64
@@ -56,15 +55,6 @@
 |release_spin_rate               |Spin rate of pitch tracked by Statcast    |mlb-pitches |float64
 |release_extension               |Release extension of pitch in feet as tracked by Statcast  |mlb-pitches |float64
 |game_pk                         |Unique Id for Game                   |mlb-pitches |int64
-|pitcher.1                       |MLB Player Id tied to the play event |mlb-pitches |int64
-|fielder_2.1                     |MLB Player Id for catcher            |mlb-pitches |int64
-|fielder_3                       |MLB Player Id for 1B                 |mlb-pitches |int64
-|fielder_4                       |MLB Player Id for 2B                 |mlb-pitches |int64
-|fielder_5                       |MLB Player Id for 3B                 |mlb-pitches |int64
-|fielder_6                       |MLB Player Id for SS                 |mlb-pitches |int64
-|fielder_7                       |MLB Player Id for LF                 |mlb-pitches |int64
-|fielder_8                       |MLB Player Id for CF                 |mlb-pitches |int64
-|fielder_9                       |MLB Player Id for RF                 |mlb-pitches |int64
 |release_pos_y   |Release position of pitch measured in feet from the catcher's perspective |mlb-pitches |float64
 |estimated_ba_using_speedangle   |Estimated Batting Avg based on launch angle and exit velocity   |mlb-pitches |float64
 |estimated_woba_using_speedangle |Estimated wOBA based on launch angle and exit velocity   |mlb-pitches |float64
@@ -78,12 +68,8 @@
 |pitch_name               |The name of the pitch derived from the Statcast Data  |mlb-pitches |object
 |home_score               |Pre-pitch home score   |mlb-pitches |int64
 |away_score           |Pre-pitch home score   |mlb-pitches |int64
-|bat_score             |Pre-pitch bat team score   |mlb-pitches |int64
-|fld_score               |Pre-pitch field team score  |mlb-pitches |int64
 |post_away_score        |Post-pitch home score     |mlb-pitches |int64
 |post_home_score         |Post-pitch away score           |mlb-pitches | int64
-|post_bat_score           |Post-pitch bat team score           |mlb-pitches |int64
-|post_fld_score          |Pre-pitch field team score          |mlb-pitches | int64
 |if_fielding_alignment   |Infield fielding alignment at the time of the pitch   |mlb-pitches |object
 |of_fielding_alignment     |Outfield fielding alignment at the time of the pitch  |mlb-pitches |object
 |spin_axis |The Spin Axis in the 2D X-Z plane in degrees from 0 to 360, such that 180 represents a pure backspin fastball and 0 degrees represents a pure topspin (12-6) curveball | mlb-pitches |float64
