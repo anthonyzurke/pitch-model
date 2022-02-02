@@ -75,6 +75,10 @@
 |spin_axis |The Spin Axis in the 2D X-Z plane in degrees from 0 to 360, such that 180 represents a pure backspin fastball and 0 degrees represents a pure topspin (12-6) curveball | mlb-pitches |float64
 |delta_home_win_exp              |The change in Win Expectancy before the Plate Appearance and after the Plate Appearance |mlb-pitches | float64
 |delta_run_exp                   |The change in Run Expectancy before the Pitch and after the Pitch |mlb-pitches |flaot64
+|Mx |The amount of movement in the x-direction due to the Magnus effect alone. (Positive is towards first base/catcher's right) |mlb-pitches |float64
+|Mz |The amount of movement in the z-direction due to the Magnus effect alone. (Positive is upwards) |mlb-pitches |float64
+|theta                           |The angle of the spin axis with respect to it's movement between 0 and 90. A 0 angle means the spin axis is perpendicular to it's movement (it's all 'useful' spin with regards to the Magnus effect); 90 means the spin axis is parallel to it's direction (like a gyroball). Pitches |mlb-pitches |float64
+|phi                             |The angle of the spin axis in the x-z plane oriented to the x-axis. More colloquially, the axis the ball is spinning from the catcher's eye. |mlb-pitches |float64
 |bauer_units                   |spin rate / velocity |mlb-pitches |flaot64
 |is_strike                   |if the result of the pitch is a strike 1 if not 0 |mlb-pitches |int64
 |pitch_count                   |balls and strikes combined |mlb-pitches |object
