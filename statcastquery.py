@@ -4,20 +4,19 @@
 # In[1]:
 
 
-from pybaseball import statcast
+from pybaseball import statcast, statcast_pitcher_spin
 
 data = statcast(start_dt = '2021-04-01', end_dt = '2021-10-04')
 
 data.to_csv('./data/mlb-pitches.csv')
 data = pd.read_csv('./data/mlb-pitches.csv')
 
-data.drop(columns = ['Unnamed: 0', 'spin_dir', 'spin_rate_deprecated', 
-                     'break_angle_deprecated', 'break_length_deprecated', 
-                     'tfs_deprecated', 'tfs_zulu_deprecated', 'umpire', 
-                     'sv_id', 'fielder_2', 'pitcher.1', 'fielder_2.1', 
-                     'fielder_3', 'fielder_4', 'fielder_5', 'fielder_6',
-                     'fielder_7', 'fielder_8', 'fielder_9', 'bat_score', 
-                     'fld_score', 'post_bat_score', 'post_fld_score'], inplace = True)
+data.drop(columns = ['spin_dir', 'spin_rate_deprecated', 'break_angle_deprecated', 
+                     'break_length_deprecated', 'tfs_deprecated', 'tfs_zulu_deprecated', 
+                     'umpire', 'sv_id', 'game_type','pitcher.1', 'fielder_2.1', 
+                     'fielder_3', 'fielder_4', 'fielder_5', 'fielder_6', 'fielder_7', 
+                     'fielder_8', 'fielder_9', 'bat_score', 'fld_score', 'post_bat_score', 
+                     'post_fld_score'], inplace = True)
 
 # Add bauer_units column
 data['bauer_units'] = data['release_spin_rate'] / data['release_speed']
