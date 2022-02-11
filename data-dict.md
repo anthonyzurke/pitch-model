@@ -79,7 +79,39 @@
 |Mz |The amount of movement in the z-direction due to the Magnus effect alone. (Positive is upwards) |mlb-pitches |float64
 |theta                           |The angle of the spin axis with respect to it's movement between 0 and 90. A 0 angle means the spin axis is perpendicular to it's movement (it's all 'useful' spin with regards to the Magnus effect); 90 means the spin axis is parallel to it's direction (like a gyroball). Pitches |mlb-pitches |float64
 |phi                             |The angle of the spin axis in the x-z plane oriented to the x-axis. More colloquially, the axis the ball is spinning from the catcher's eye. |mlb-pitches |float64
-|bauer_units                   |spin rate / velocity |mlb-pitches |flaot64
+|bauer_units                   |spin rate / velocity |mlb-pitches |float64
 |is_strike                   |if the result of the pitch is a strike 1 if not 0 |mlb-pitches |int64
 |pitch_count                   |balls and strikes combined |mlb-pitches |object
-|swing_miss                   |if the result of the pitch is a swing and miss 1 if not 0 |mlb-pitches |flaot64
+|swing_miss                   |if the result of the pitch is a swing and miss 1 if not 0 |mlb-pitches |float64
+|movement_inches |Total vertical and horizontal changes |arsenal-spin |float64 |
+|active_spin_formatted |decimal of spin efficiency |arsenal-spin |float64 |
+|alan_active_spin_pct | Rotation efficiency calculated from TrackMan data |arsenal-spin |float64 |
+|active_spin | Rotational efficiency measured by Hawkeye |arsenal-spin |float64 |
+|hawkeye_measured | Change direction assumed from the rotation axis measured by Hawkeye (12 o'clock = 180 ° = directly above) |arsenal-spin |float64 |
+|movement_inferred | Direction of change measured by (12 o'clock = 180 ° = directly above) |arsenal-spin |float64 |
+|diff_measured_inferred |
+|diff2 | 
+|run_value_per_100 | Run value / 100 pitches |arsenal-spin |float64 |
+|run_value | The run impact of an event based on the runners on base, outs, ball and strike count |arsenal-spin |float64 |
+|pa | Plate appearences faced |arsenal-spin |float64 |
+|ba | hits / total at-bats for a number between zero (shown as .000) and one (1.000) |arsenal-spin |float64 |
+|slg | Total number of bases a player records per at-bat |arsenal-spin |float64 |
+|woba | A version of on-base percentage that accounts for how a player reached base |arsenal-spin |float64 |
+|whiff_percent | swings / (total swings) for every .5/.25/.1 foot |arsenal-spin |float64 |
+|k_percent | Strike percentage |arsenal-spin |float64 |
+|put_away | The rate of two-strike pitches that result in a strikeout |arsenal-spin |float64 |
+|est_ba | xBA measures the likelihood that a batted ball will become a hit |arsenal-spin |float64 |
+|est_slg | Formulated using exit velocity, launch angle and, on certain types of batted balls, Sprint Speed |arsenal-spin |float64 |
+|est_woba | Formulated using exit velocity, launch angle and, on certain types of batted balls, Sprint Speed |arsenal-spin |float64 |
+|hard_hit_percent | Percentage  of hits with an exit velocity of 95 mph or higher |arsenal-spin |float64 |
+|diff_measured_inferred_minutes | Difference between movement_inferred and hawkeye_measured |arsenal-spin |float64 |
+|hawkeye_measured_clock_hh | Numerical value indicating movement_inferred in hours (in 1-hour increments) |arsenal-spin |float64 |
+|hawkeye_measured_clock_mm | Numerical value indicating hawkeye_measured in minutes (in 15-minute increments)|arsenal-spin |float64 |
+|movement_inferred_clock_hh | Numerical value indicating movement_inferred in hours (in 1-hour increments) |arsenal-spin |float64 |
+|movement_inferred_clock_mm | Numerical value indicating movement_inferred in minutes (in 15-minute increments) |arsenal-spin |float64 |
+|diff_clock_hh | Difference between Spin-Based and Observed |arsenal-spin |float64 |
+|diff_clock_mm | Difference between Spin-Based and Observed |arsenal-spin |float64 |
+|hawkeye_measured_clock_label | Actual direction of change measured by Hawkeye |arsenal-spin |Object |
+|movement_inferred_clock_label | Actual direction of change measured by TrackMan |arsenal-spin |Object |
+|diff_clock_label | Difference between Spin-Based and Observed |arsenal-spin |Object |
+|team_name_alt | Team name abv. |arsenal-spin |Object |
