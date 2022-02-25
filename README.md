@@ -1,1 +1,1 @@
-# pitcher-classification
+# pitcher-model
