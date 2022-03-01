@@ -96,6 +96,7 @@ pitch[['hit_distance_sc', 'launch_speed', 'launch_angle', 'estimated_ba_using_sp
                                        'estimated_ba_using_speedangle', 'estimated_woba_using_speedangle', 
                                        'woba_value', 'woba_denom', 'babip_value', 'iso_value', 
                                        'launch_speed_angle']].fillna(value = 0)
+
 # data['stand'] = data['stand'].map({'R': 0, 'L': 1})
 # data['p_throws'] = data['p_throws'].map({'R': 0, 'L': 1})
 
@@ -106,7 +107,9 @@ pitch = pitch[(pitch['pitch_type'] != 'KC') & (pitch['pitch_type'] != 'FS')]
 col_dict = {
     'release_speed': 'velo',
     'release_spin_rate': 'spin_rate',
-    'launch_speed': 'exit_velo'
+    'launch_speed': 'exit_velo',
+    'estimated_ba_using_speedangle': 'xba',
+    'estimated_woba_using_speedangle': 'xwobacon'
 }
 pitch.rename(columns = col_dict, inplace = True)
 
