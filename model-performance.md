@@ -22,26 +22,26 @@ Model: Linear Regression
 
 
 ### model-run-exp
-**Independent Variables:** Velocity, Release Extension, HB, VB, Spin Rate, Launch Speed Angle, xBA, Delta Run Expectancy, ISO Value
+**Independent Variables:** Velocity, HB, VB, Release Extension, Vertical Release Position, wOBA
 
-**Dependent Variable:** xwOBAcon
+**Dependent Variable:** Delta Run Expectancy
 
 Model: Linear Regression
 
 |Pitch Type       |R2 Score  |MSE       |RMSE       |MAE        |  
 |--               |---       |--        |---        |---        |
-|4-Seam - RHP     |0.     |0.    |0.     |0.     |
-|4-Seam - LHP     |0.     |0.    |0.     |0.     |
-|Cutter - RHP     |0.     |0.    |0.     |0.     |
-|Cutter - LHP     |0.     |0.    |0.     |0.     |
-|Sinker - RHP     |0.     |0.    |0.     |0.     |
-|Sinker - LHP     |0.     |0.    |0.     |0.     |
-|Slider - RHP     |0.     |0.    |0.     |0.     |
-|Slider - LHP     |0.     |0.    |0.     |0.     |
-|Curveball - RHP  |0.     |0.    |0.     |0.     |
-|Curveball - LHP  |0.     |0.    |0.     |0.     |
-|Changeup - RHP   |0.     |0.    |0.     |0.     |
-|Changeup - LHP   |0.     |0.    |0.     |0.     |
+|4-Seam - RHP     |0.785     |0.0644    |0.2538     |0.1708     |
+|4-Seam - LHP     |0.780     |0.0642    |0.2535     |0.1725     |
+|Cutter - RHP     |0.783     |0.0656    |0.256      |0.1763     |
+|Cutter - LHP     |0.775     |0.0663    |0.2574     |0.1776     |
+|Sinker - RHP     |0.778     |0.0617    |0.2484     |0.175      |
+|Sinker - LHP     |0.770     |0.0611    |0.2471     |0.1733     |
+|Slider - RHP     |0.784     |0.067     |0.2588     |0.1763     |
+|Slider - LHP     |0.781     |0.0704    |0.2653     |0.1802     |
+|Curveball - RHP  |0.780     |0.0622    |0.2495     |0.1645     |
+|Curveball - LHP  |0.784     |0.0613    |0.2476     |0.1668     |
+|Changeup - RHP   |0.793     |0.0578    |0.2404     |0.1659     |
+|Changeup - LHP   |0.785     |0.0584    |0.2416     |0.1673     |
 
 
 ### test1-model-xwobacon
