@@ -77,25 +77,19 @@ col_dict = {
 }
 
 df.rename(columns = col_dict, inplace = True)
-
 df.to_csv('./data/arsenal-spin.csv')
 
-# Clean data for Modeling
+# Clean data for modeling
+
 data = pd.read_csv('../data/mlb-pitches.csv')
 data.drop(columns = ['Unnamed: 0', 'Unnamed: 0.1'], inplace = True)
 
-pitch = data[['pitch_type','release_speed', 'release_spin_rate', 'spin_axis', 'pfx_-x', 'pfx_z', 'bauer_units', 
-              'effective_speed', 'release_pos_x', 'release_pos_z', 'release_extension', 'release_pos_y',
-              'plate_-x', 'plate_x', 'plate_z', 'swing_miss', 'delta_run_exp', 'hit_distance_sc', 
-              'launch_speed', 'launch_angle', 'launch_speed_angle', 'estimated_ba_using_speedangle', 
-              'estimated_woba_using_speedangle', 'woba_value', 'woba_denom', 'babip_value', 'iso_value']].copy()
-
-pitch[['hit_distance_sc', 'launch_speed', 'launch_angle', 'estimated_ba_using_speedangle', 
-       'estimated_woba_using_speedangle', 'woba_value', 'woba_denom', 'babip_value', 'iso_value', 
-       'launch_speed_angle']] = pitch[['hit_distance_sc', 'launch_speed', 'launch_angle', 
-                                       'estimated_ba_using_speedangle', 'estimated_woba_using_speedangle', 
-                                       'woba_value', 'woba_denom', 'babip_value', 'iso_value', 
-                                       'launch_speed_angle']].fillna(value = 0)
+pitch = data[['p_throws', 'pitch_type','release_speed', 'release_spin_rate', 'spin_axis', 'pfx_-x', 'pfx_z', 
+              'bauer_units', 'effective_speed', 'release_pos_x', 'release_pos_z', 'release_extension', 
+              'release_pos_y', 'plate_-x', 'plate_x', 'plate_z', 'swing_miss', 'delta_run_exp', 'stand',
+              'hit_distance_sc', 'launch_speed', 'launch_angle', 'launch_speed_angle', 
+              'estimated_ba_using_speedangle', 'estimated_woba_using_speedangle', 'woba_value', 'woba_denom', 
+              'babip_value', 'iso_value']].copy()
 
 # data['stand'] = data['stand'].map({'R': 0, 'L': 1})
 # data['p_throws'] = data['p_throws'].map({'R': 0, 'L': 1})
@@ -112,5 +106,4 @@ col_dict = {
     'estimated_woba_using_speedangle': 'xwobacon'
 }
 pitch.rename(columns = col_dict, inplace = True)
-
 pitch.to_csv('../data/model-pitches.csv')
