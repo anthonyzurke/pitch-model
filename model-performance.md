@@ -33,7 +33,7 @@ Model: Linear Regression
 
 
 ### test2-model-xwobacon
-**Independent Variables:** Velocity, Spin Rate, Release Extension, HB, VB, Launch Speed Angle, xBA, Delta Run Expectency, ISO Value
+**Independent Variables:** Velocity, Spin Rate, Release Extension, HB, VB, Launch Speed Angle, xBA, Delta Run Expectancy, ISO Value
 
 **Dependent Variable:** xwOBAcon
 
@@ -50,7 +50,7 @@ Model: Linear Regression
 
 
 ### test3-model-xwobacon
-**Independent Variables:** Velocity, Release Extension, VB, HB, Launch Speed Angle, xBA
+**Independent Variables:** Velocity, Release Extension, VB, HB, Spin Rate, Launch Speed Angle, xBA, Delta Run Expectancy, ISO Value
 
 **Dependent Variable:** xwOBAcon
 
