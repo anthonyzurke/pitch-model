@@ -84,10 +84,10 @@ df.to_csv('./data/arsenal-spin.csv')
 data = pd.read_csv('../data/mlb-pitches.csv')
 data.drop(columns = ['Unnamed: 0', 'Unnamed: 0.1'], inplace = True)
 
-pitch = data[['p_throws', 'pitch_type','release_speed', 'release_spin_rate', 'spin_axis', 'pfx_-x', 'pfx_z', 
-              'bauer_units', 'effective_speed', 'release_pos_x', 'release_pos_z', 'release_extension', 
-              'release_pos_y', 'plate_-x', 'plate_x', 'plate_z', 'swing_miss', 'delta_run_exp', 'stand',
-              'hit_distance_sc', 'launch_speed', 'launch_angle', 'launch_speed_angle', 
+pitch = data[['player_name', 'p_throws', 'pitch_type','release_speed', 'release_spin_rate', 'spin_axis', 
+              'pfx_-x', 'pfx_z', 'bauer_units', 'effective_speed', 'release_pos_x', 'release_pos_z', 
+              'release_extension', 'release_pos_y', 'plate_-x', 'plate_x', 'plate_z', 'swing_miss', 
+              'delta_run_exp', 'stand', 'hit_distance_sc', 'launch_speed', 'launch_angle', 'launch_speed_angle', 
               'estimated_ba_using_speedangle', 'estimated_woba_using_speedangle', 'woba_value', 'woba_denom', 
               'babip_value', 'iso_value']].copy()
 
