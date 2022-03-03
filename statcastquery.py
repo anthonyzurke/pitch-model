@@ -86,10 +86,10 @@ data.drop(columns = ['Unnamed: 0', 'Unnamed: 0.1'], inplace = True)
 
 pitch = data[['player_name', 'p_throws', 'pitch_type','release_speed', 'release_spin_rate', 'spin_axis', 
               'pfx_-x', 'pfx_z', 'bauer_units', 'effective_speed', 'release_pos_x', 'release_pos_z', 
-              'release_extension', 'release_pos_y', 'plate_-x', 'plate_x', 'plate_z', 'swing_miss', 
-              'delta_run_exp', 'stand', 'hit_distance_sc', 'launch_speed', 'launch_angle', 'launch_speed_angle', 
-              'estimated_ba_using_speedangle', 'estimated_woba_using_speedangle', 'woba_value', 'woba_denom', 
-              'babip_value', 'iso_value']].copy()
+              'release_extension', 'release_pos_y', 'plate_-x', 'plate_x', 'plate_z', 'delta_run_exp', 
+              'stand', 'events', 'description', 'hit_distance_sc', 'launch_speed', 'launch_angle', 
+              'launch_speed_angle', 'estimated_ba_using_speedangle', 'estimated_woba_using_speedangle', 
+              'woba_value', 'woba_denom', 'babip_value', 'iso_value']].copy()
 
 # data['stand'] = data['stand'].map({'R': 0, 'L': 1})
 # data['p_throws'] = data['p_throws'].map({'R': 0, 'L': 1})
