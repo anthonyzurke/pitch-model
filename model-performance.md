@@ -95,7 +95,7 @@ Model: Linear Regression
 
 **Dependent Variable:** 
 
-Model: Linear Regression
+Model: Random Forest
 
 |Pitch Type       |R2 Score  |MSE       |RMSE       |MAE        |  
 |--               |---       |--        |---        |---        |
