@@ -1,9 +1,9 @@
-from pybaseball import statcast, statcast_pitcher_spin
+from pybaseball import statcast
 
 data = statcast(start_dt = '2021-04-01', end_dt = '2021-10-04')
 
-data.to_csv('./data/mlb-pitches.csv')
-data = pd.read_csv('./data/mlb-pitches.csv')
+data.to_csv('../data/mlb-pitches.csv')
+data = pd.read_csv('../data/mlb-pitches.csv')
 
 data.drop(columns = ['spin_dir', 'spin_rate_deprecated', 'break_angle_deprecated', 
                      'break_length_deprecated', 'tfs_deprecated', 'tfs_zulu_deprecated', 
@@ -24,11 +24,12 @@ data['is_strike'] = [1 if x != 'B' else 0 for x in data['type']]
 # Create pitch_count column
 data['pitch_count'] = data[['balls', 'strikes']].astype(str).agg('-'.join, axis = 1)
 
-data['description'].replace(['blocked_ball', 'foul_tip', 'swinging_strike_blocked', 'foul_bunt'], 
-                            ['ball', 'foul', 'swinging_strike', 'foul'], inplace = True)
+data['description'].replace(['blocked_ball', 'foul_tip', 'missed_bunt' 'swinging_strike_blocked', 'foul_bunt', 
+                             'bunt_foul_tip', 'foul_pitchout'], 
+                            ['ball', 'foul', 'swinging_strike', 'swinging_strike','foul', 'foul'], inplace = True)
 # Make all events that aren't hits, outs
-data['events'].replace(['field_out', 'grounded_into_double_play', 'sac_fly', 'force_out', 'hit_by_pitch', 
-                        'field_error', 'fielders_choice', 'fielders_choice_out'], 'out', inplace = True)
+data['events'].replace(['grounded_into_double_play', 'sac_fly', 'force_out', 'hit_by_pitch', 
+                        'fielders_choice', 'fielders_choice_out'], 'field_out', inplace = True)
 # make swing_miss column
 data['swing_miss'] = [1 if x == 'swinging_strike' else 0 for x in data['description']]
 
@@ -46,7 +47,32 @@ data['pfx_x'] = 12 * data['pfx_x']
 data['pfx_-x'] = 12 * data['pfx_-x']
 data['pfx_z'] = 12 * data['pfx_z']
 
-data.to_csv('./data/mlb-pitches.csv')
+data.to_csv('../data/mlb-pitches.csv')
+
+# Clean data for modeling
+
+data = pd.read_csv('../data/mlb-pitches.csv')
+data.drop(columns = ['Unnamed: 0', 'Unnamed: 0.1'], inplace = True)
+
+pitch = data[['player_name', 'p_throws', 'pitch_type','release_speed', 'release_spin_rate', 'spin_axis', 
+              'pfx_-x', 'pfx_z', 'bauer_units', 'effective_speed', 'release_pos_x', 'release_pos_z', 
+              'release_extension', 'release_pos_y', 'plate_-x', 'plate_x', 'plate_z', 'type', 'balls', 
+              'strikes', 'delta_run_exp', 'stand', 'events', 'description', 'hit_distance_sc', 'launch_speed', 
+              'launch_angle', 'launch_speed_angle', 'estimated_ba_using_speedangle', 
+              'estimated_woba_using_speedangle', 'woba_value', 'woba_denom', 'babip_value', 'iso_value',
+              'at_bat_number', 'pitch_number', 'inning', 'inning_topbot', 'home_score', 'away_score', 
+              'on_1b', 'on_2b', 'on_3b', 'outs_when_up']].copy()
+
+#Rename some columns
+col_dict = {
+    'release_speed': 'velo',
+    'release_spin_rate': 'spin_rate',
+    'launch_speed': 'exit_velo',
+    'estimated_ba_using_speedangle': 'xba',
+    'estimated_woba_using_speedangle': 'xwobacon'
+}
+pitch.rename(columns = col_dict, inplace = True)
+pitch.to_csv('../data/model-pitches.csv')
 
 # Clean arsenal and spin dataset
 arsenal = pd.read_csv('./data/pitch-arsenal-stats.csv')
@@ -78,32 +104,3 @@ col_dict = {
 
 df.rename(columns = col_dict, inplace = True)
 df.to_csv('./data/arsenal-spin.csv')
-
-# Clean data for modeling
-
-data = pd.read_csv('../data/mlb-pitches.csv')
-data.drop(columns = ['Unnamed: 0', 'Unnamed: 0.1'], inplace = True)
-
-pitch = data[['player_name', 'p_throws', 'pitch_type','release_speed', 'release_spin_rate', 'spin_axis', 
-              'pfx_-x', 'pfx_z', 'bauer_units', 'effective_speed', 'release_pos_x', 'release_pos_z', 
-              'release_extension', 'release_pos_y', 'plate_-x', 'plate_x', 'plate_z', 'delta_run_exp', 
-              'stand', 'events', 'description', 'hit_distance_sc', 'launch_speed', 'launch_angle', 
-              'launch_speed_angle', 'estimated_ba_using_speedangle', 'estimated_woba_using_speedangle', 
-              'woba_value', 'woba_denom', 'babip_value', 'iso_value']].copy()
-
-# data['stand'] = data['stand'].map({'R': 0, 'L': 1})
-# data['p_throws'] = data['p_throws'].map({'R': 0, 'L': 1})
-
-# Drop pitch types Knuckle Curve and Splitter
-pitch = pitch[(pitch['pitch_type'] != 'KC') & (pitch['pitch_type'] != 'FS')]
-
-#Rename some columns
-col_dict = {
-    'release_speed': 'velo',
-    'release_spin_rate': 'spin_rate',
-    'launch_speed': 'exit_velo',
-    'estimated_ba_using_speedangle': 'xba',
-    'estimated_woba_using_speedangle': 'xwobacon'
-}
-pitch.rename(columns = col_dict, inplace = True)
-pitch.to_csv('../data/model-pitches.csv')
