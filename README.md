@@ -55,4 +55,4 @@
 |runs          |If result of the pitch leads to a run  | model-pitches |float64
 |re          |Run Expectancy Matrix value based on base-out-state | model-pitches |float64
 |re_after        |Run Expectancy Difference plus Run Expectancy value | model-pitches |float64
-|re_play          |Run Expectancy based on the outcome of the play | model-pitches |float64
+|re24          |Run Expectancy based on the outcome of the play | model-pitches |float64

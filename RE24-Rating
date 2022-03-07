@@ -1,0 +1,11 @@
+# Run Expectancy 24 Ratings
+
+|Rating           |RE24 SP  |RE RP        
+|---              |---      |---          
+|Excellent        |25       |15
+|Great            |15       |10
+|Above Average    |10       |5
+|Average          |10       |0
+|Below Average    |0        |-5
+|Poor             |-10      |-10
+|Awful            |-20      |-15
