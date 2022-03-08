@@ -52,15 +52,14 @@ data.to_csv('../data/mlb-pitches.csv')
 # Clean data for modeling
 
 pitch = pd.read_csv('../data/mlb-pitches.csv', index_col = [0])
-
 pitch = pitch[['player_name', 'p_throws', 'pitch_type','release_speed', 'release_spin_rate', 'spin_axis', 
                'pfx_-x', 'pfx_z', 'bauer_units', 'effective_speed', 'release_pos_x', 'release_pos_z', 
-               'release_extension', 'release_pos_y', 'plate_-x', 'plate_x', 'plate_z', 'type', 'balls', 
-               'strikes', 'delta_run_exp', 'stand', 'events', 'description', 'hit_distance_sc', 'launch_speed', 
-               'launch_angle', 'launch_speed_angle', 'estimated_ba_using_speedangle', 
-               'estimated_woba_using_speedangle', 'woba_value', 'woba_denom', 'babip_value', 'iso_value',
-               'at_bat_number', 'pitch_number', 'inning', 'inning_topbot', 'home_score', 'away_score', 
-               'post_home_score', 'post_away_score', 'on_1b', 'on_2b', 'on_3b', 'outs_when_up']].copy()
+               'release_extension', 'release_pos_y', 'plate_-x', 'plate_x', 'plate_z', 'type', 'balls','strikes', 
+               'pitch_count', 'stand', 'description', 'events', 'hit_distance_sc', 'launch_speed','launch_angle', 
+               'launch_speed_angle', 'estimated_ba_using_speedangle', 'estimated_woba_using_speedangle', 
+               'woba_value', 'woba_denom', 'babip_value', 'iso_value','at_bat_number', 'pitch_number', 
+               'inning', 'inning_topbot', 'home_score', 'away_score', 'post_home_score', 'post_away_score', 
+               'on_1b', 'on_2b', 'on_3b', 'outs_when_up', 'delta_run_exp']].copy()
 
 #Rename some columns
 col_dict = {
@@ -71,58 +70,33 @@ col_dict = {
     'estimated_woba_using_speedangle': 'xwobacon'
 }
 pitch.rename(columns = col_dict, inplace = True)
-
-pitch['inning_topbot'] = pitch.inning_topbot.map({'Top': 0, 'Bot': 1})
-pitch['on_1b'] = [1 if x > 1 else 0 for x in pitch['on_1b']]
-pitch['on_2b'] = [1 if x > 1 else 0 for x in pitch['on_2b']]
-pitch['on_3b'] = [1 if x > 1 else 0 for x in pitch['on_3b']]
-
-pitch['home_runs'] = pitch['post_home_score'] - pitch['home_score']
-pitch['away_runs'] = pitch['post_away_score'] - pitch['away_score']
-pitch['runs'] = pitch['home_runs'] + pitch['away_runs']
-
 pitch.to_csv('../data/model-pitches.csv')
 
-# Run Expectancy Table
+# Run Expectany Table
 
-matrix = [[0, 0, 0, 0, 0.481], [1, 0, 0, 0, 0.859], [0, 1, 0, 0, 1.100], [1, 1, 0, 0, 1.437], 
-          [0, 0, 1, 0, 1.350], [1, 0, 1, 0, 1.784], [0, 1, 1, 0, 1.964], [1, 1, 1, 0, 2.292], 
-          [0, 0, 0, 1, 0.254], [1, 0, 0, 1, 0.509], [0, 1, 0, 1, 0.664], [1, 1, 0, 1, 0.884], 
-          [0, 0, 1, 1, 0.950], [1, 0, 1, 1, 1.130], [0, 1, 1, 1, 1.376], [1, 1, 1, 1, 1.541],
-          [0, 0, 0, 2, 0.098], [1, 0, 0, 2, 0.224], [0, 1, 0, 2, 0.319], [1, 1, 0, 2, 0.429], 
-          [0, 0, 1, 2, 0.353], [1, 0, 1, 2, 0.478], [0, 1, 1, 2, 0.580], [1, 1, 1, 2, 0.752]]
+# 2010-2015 Run Expectancy
+# matrix = [[0, 0, 0, 0, 0.481], [1, 0, 0, 0, 0.859], [0, 1, 0, 0, 1.100], [1, 1, 0, 0, 1.437], 
+#           [0, 0, 1, 0, 1.350], [1, 0, 1, 0, 1.784], [0, 1, 1, 0, 1.964], [1, 1, 1, 0, 2.292], 
+#           [0, 0, 0, 1, 0.254], [1, 0, 0, 1, 0.509], [0, 1, 0, 1, 0.664], [1, 1, 0, 1, 0.884], 
+#           [0, 0, 1, 1, 0.950], [1, 0, 1, 1, 1.130], [0, 1, 1, 1, 1.376], [1, 1, 1, 1, 1.541],
+#           [0, 0, 0, 2, 0.098], [1, 0, 0, 2, 0.224], [0, 1, 0, 2, 0.319], [1, 1, 0, 2, 0.429], 
+#           [0, 0, 1, 2, 0.353], [1, 0, 1, 2, 0.478], [0, 1, 1, 2, 0.580], [1, 1, 1, 2, 0.752]]
+
+# 2019 Run Expectancy
+matrix = [[0, 0, 0, 0, 0.544], [1, 0, 0, 0, 0.935], [0, 1, 0, 0, 1.147], [1, 1, 0, 0, 1.537], 
+          [0, 0, 1, 0, 1.369], [1, 0, 1, 0, 1.759], [0, 1, 1, 0, 1.971], [1, 1, 1, 0, 2.362],
+          [0, 0, 0, 1, 0.298], [1, 0, 0, 1, 0.564], [0, 1, 0, 1, 0.713], [1, 1, 0, 1, 0.979], 
+          [0, 0, 1, 1, 0.953], [1, 0, 1, 1, 1.219], [0, 1, 1, 1, 1.368], [1, 1, 1, 1, 1.634],
+          [0, 0, 0, 2, 0.115], [1, 0, 0, 2, 0.242], [0, 1, 0, 2, 0.339], [1, 1, 0, 2, 0.467], 
+          [0, 0, 1, 2, 0.391], [1, 0, 1, 2, 0.518], [0, 1, 1, 2, 0.615], [1, 1, 1, 2, 0.743]]
 
 re = pd.DataFrame(matrix, columns = ['on_1b', 'on_2b', 'on_3b', 'outs_when_up', 're'])
 re.to_csv('../data/run_expectancy_table.csv')
 
-# Clean arsenal and spin dataset
+# wOBA by Count
 
-arsenal = pd.read_csv('./data/pitch-arsenal-stats.csv')
-arsenal = arsenal.sort_values(by = ['last_name'], ascending = True)
-#print(arsenal.shape)
+count_woba = [['0-0', 0.331], ['0-1', 0.281], ['0-2', 0.207], ['1-0', 0.374], ['1-1', 0.313], ['1-2', 0.233], 
+              ['2-0', 0.444], ['2-1', 0.372], ['2-2', 0.282], ['3-0', 0.588], ['3-1', 0.488], ['3-2', 0.387]]
 
-spin = pd.read_csv('./data/spin-direction-pitches.csv')
-spin.drop(columns = ['year', 'hawkeye_measured_clock_minutes', 'movement_inferred_clock_minutes'], inplace = True)
-spin = spin.sort_values(by = ['last_name'], ascending = True)
-spin.rename(columns={'api_pitch_type': 'pitch_type', 'api_pitch_name': 'pitch_name'}, inplace=True)
-#print(spin.shape)
-
-df = pd.merge(arsenal, spin, how = 'inner', on = ['player_id', 'pitch_type', 'pitch_type'])
-df.drop_duplicates(subset = ['player_id', 'pitch_type'], inplace = True)
-df = df[['last_name_x', 'last_name_y', ' first_name_x', 'player_id', 'pitch_hand',
-         'pitch_type', 'pitch_name_x', 'pitch_name_y', 'pitches', 'n_pitches', 'pitch_usage',
-         'release_speed', 'spin_rate', 'movement_inches', 'active_spin_formatted', 'alan_active_spin_pct', 
-         'active_spin', 'hawkeye_measured', 'movement_inferred', 'diff_measured_inferred', 'diff2', 
-         'run_value_per_100', 'run_value', 'pa', 'ba', 'slg', 'woba', 'whiff_percent', 'k_percent', 
-         'put_away', 'est_ba', 'est_slg', 'est_woba', 'hard_hit_percent', 'diff_measured_inferred_minutes', 
-         'hawkeye_measured_clock_hh', 'hawkeye_measured_clock_mm', 'movement_inferred_clock_hh', 
-         'movement_inferred_clock_mm', 'diff_clock_hh', 'diff_clock_mm', 'hawkeye_measured_clock_label', 
-         'movement_inferred_clock_label', 'diff_clock_label', 'team_name_alt']]
-#print(df.shape)
-
-col_dict = {
-    'active_spin_formatted': 'spin_eff%', 
-}
-
-df.rename(columns = col_dict, inplace = True)
-df.to_csv('./data/arsenal-spin.csv')
+woba_value = pd.DataFrame(count_woba, columns = ['pitch_count', 'count_woba_value'])
+woba_value.to_csv('../data/count_woba_value.csv')
