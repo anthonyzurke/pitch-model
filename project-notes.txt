@@ -1,0 +1,4 @@
+1. create new cluster with updated data & features
+2. plots of predictions and residuals
+3. plots of HB & VB by RV
+4. players with best & worst RV
