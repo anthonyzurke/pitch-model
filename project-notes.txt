@@ -1,8 +1,0 @@
-1. create new cluster with updated data & features
-2. plots of predictions and residuals
-3. plots of HB & VB by RV
-4. players with best & worst RV
-
-Des2 is field_out, walk, single, strikeout, double, sac fly
-
-Columns to add: Final pitch game, Final pitch AB, Runs scored on pitch, Bat score after, Final pitch inning, Bat score start inning, Bat score end inning, Cumulative runs in inning, Runs to end inning, Base out state, Avg re, Next base out state, Next avg re, Change re, Re24
