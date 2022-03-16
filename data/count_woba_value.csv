@@ -1,4 +1,4 @@
-,pitch_count,count_woba_value,wraa,is_strike,is_ball,value_change
+,pitch_count,count_woba_value,wraa,is_strike,is_ball,wraa_change
 0,0-0,0.31,0.0,1,0,-0.037
 1,0-0,0.31,0.0,0,1,0.032
 2,0-1,0.262,-0.037,1,0,-0.051

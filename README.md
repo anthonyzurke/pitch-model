@@ -50,9 +50,22 @@
 |on_2b          |Pre-pitch 1 if player is on 2nd, 0 if not | model-pitches |float64
 |on_3b          |Pre-pitch 1 if player is on 3rd, 0 if not | model-pitches |float64
 |outs_when_up          |Pre-pitch number of outs | model-pitches |float64
+|is_strike          |1 if strike was thrown 0 if ball was thrown | model-pitches |int64
+|is_ball          |1 if ball was thrown 0 if strike was thrown | model-pitches |int64
+|final_pitch_ab          |If the last pitch in the at bat was thrown | model-pitches |int64
+|out_to_end_inning          |If result of the at bat ends the half inning | model-pitches |int64
 |home_runs          |If result of the pitch leads to a run | model-pitches |float64
 |away_runs          |If result of the pitch leads to a run | model-pitches |float64
 |runs          |If result of the pitch leads to a run  | model-pitches |float64
 |re          |Run Expectancy Matrix value based on base-out-state | model-pitches |float64
-|re_after        |Run Expectancy Difference plus Run Expectancy value | model-pitches |float64
-|re24          |Run Expectancy based on the outcome of the play | model-pitches |float64
+|re_change          |Change in Run Expectancy based on current base-out-state and the next base-out-state |model-pitches |float64
+|re_end_state    |Run Expectancy Matrix value based on the next base-out-state | model-pitches |float64
+|re24          |Run Expectancy change based on the outcome of the play | model-pitches |float64
+|lin_weight_above_avg  |Avg RE24 of all events | model-pitches |float64
+|lin_weight_above_outs  |Avg RE24 of all events with outs = 0 | model-pitches |float64
+|woba_scale   |Season total wOBA divided by wOBA denominator | model-pitches |float64
+|final_lin_weights  |Linear weight above outs multiplied by wOBA scale| model-pitches |float64
+|count_woba_value   |wOBA value based count | model-pitches |float64
+|wraa   |Weighted runs above average based on count | model-pitches |float64
+|wraa_change   |Change in weighted runs above average based on change in count | model-pitches |float64
+|wraa_after   |WRAA plus WRAA change | model-pitches |float64
